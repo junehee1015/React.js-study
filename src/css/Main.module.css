@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding : 0;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+#loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: #fff;
+}
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 70vw;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+@media (max-width: 480px) {
+  #loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  #container {
+    width: 90vw;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+}

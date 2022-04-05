@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Movie from '../movieComponent/Movie';
+import styles from '../css/Main.module.css';
 
 function Main() {
   // useState
@@ -23,17 +24,16 @@ function Main() {
     getMovies();
   }, []);
 
-  console.log(movies);
   return (
     // map을 사용하면 key가 항상 필요하다.
-    <div>
-      {loading ? <h1>Loading...</h1> : movies.map(movie => <Movie
+    <div id={styles.container}>
+      {loading ? <h1 id={styles.loading}>L o a d i n g . . .</h1> : movies.map(movie => <Movie
         key={movie.id}
         id={movie.id}
-        title={movie.title}
-        genres={movie.genres}
         img={movie.medium_cover_image}
-        summary={movie.summary}
+        title={movie.title}
+        year={movie.year}
+        bg={movie.background_image}
       />)}
     </div>
   );

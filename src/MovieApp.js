@@ -8,10 +8,10 @@ import Detail from './movieRoutes/Detail';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
-        <Route path='/detail/:id' element={<Detail />}></Route>
-        <Route path='/' element={<Main />}></Route>
+        <Route path={`/detail/:id`} element={<Detail />}></Route>
+        <Route path={`/`} element={<Main />}></Route>
       </Routes>
     </BrowserRouter>
   );

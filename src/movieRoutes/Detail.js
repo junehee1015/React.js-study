@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import styles from '../css/Detail.module.css';
 
 function Detail() {
   // Router에 사용한 parameter 사용.(현재 id)
@@ -23,15 +24,29 @@ function Detail() {
 
   return (
     <div>
-      {loading ? <h1>Loading...</h1> : (
-        <div>
-          <img src={movie.large_cover_image}/>
+      {loading ? <h1 id={styles.loading}>L o a d i n g . . .</h1> : (
+        <div className={styles.container}>
+          <div className={styles.img_container} style={{
+            background: `url(${movie.background_image})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+          }}>
+            <img src={movie.medium_cover_image}/>
+          </div>
           <h1>{movie.title}</h1>
-          <ul>
+          <ul className={styles.genres}>
             {movie.genres.map(genre => <li key={genre}>{genre}</li>)}
           </ul>
-          <p>{movie.year}년 개봉</p>
-          <p>평점 : {movie.rating}</p>
+          <div className={styles.info}>
+            <span>재생시간 {movie.runtime}분</span>
+            <span>{movie.year}</span>
+            <span>⭐평점 {movie.rating}</span>
+            <h3>줄거리</h3>
+            <p>{movie.description_intro}</p>
+          </div>
+          <div className={styles.back}>
+            <Link to={`/`}><span>back</span></Link>
+          </div>
         </div>
       )}
     </div>
